@@ -4,18 +4,37 @@
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "64x64",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "icons/icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "icons/icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "icons/icon-128x128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshot1.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/screenshot2.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
     }
   ],
   "start_url": ".",
@@ -23,17 +42,3 @@
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
-"screenshots": [
-  {
-    "src": "screenshots/desktop.png",
-    "sizes": "649x890",
-    "type": "image/png",
-    "form_factor": "narrow"
-  },
-  {
-    "src": "screenshots/mobile.png",
-    "sizes": "649x890",
-    "type": "image/png",
-    "form_factor": "narrow"
-  }
-]
