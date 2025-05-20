@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gold-pivot-Ver2.1/static/css/main.905b9fc9.css",
+    "main.js": "/gold-pivot-Ver2.1/static/js/main.4608517e.js",
+    "index.html": "/gold-pivot-Ver2.1/index.html",
+    "main.905b9fc9.css.map": "/gold-pivot-Ver2.1/static/css/main.905b9fc9.css.map",
+    "main.4608517e.js.map": "/gold-pivot-Ver2.1/static/js/main.4608517e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.905b9fc9.css",
+    "static/js/main.4608517e.js"
+  ]
+}
