@@ -10,16 +10,17 @@ const isLocalhost = Boolean(
 
 export function register() {
   if ('serviceWorker' in navigator) {
-    const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+    // آدرس نسبی برای GitHub Pages
+    const swUrl = 'service-worker.js';
 
     if (isLocalhost) {
       // توسعه محلی
       checkValidServiceWorker(swUrl);
       navigator.serviceWorker.ready.then(() => {
-        console.log('Service worker آماده استفاده روی localhost.');
+        console.log('✅ Service Worker آماده استفاده در localhost.');
       });
     } else {
-      // در حالت production
+      // در production مثل GitHub Pages
       registerValidSW(swUrl);
     }
   }
@@ -29,15 +30,17 @@ function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
-      console.log('Service worker ثبت شد:', registration);
+      console.log('✅ Service Worker با موفقیت ثبت شد:', registration);
     })
     .catch(error => {
-      console.error('خطا در ثبت service worker:', error);
+      console.error('❌ خطا در ثبت Service Worker:', error);
     });
 }
 
 function checkValidServiceWorker(swUrl) {
-  fetch(swUrl)
+  fetch(swUrl, {
+    headers: { 'Service-Worker': 'script' }
+  })
     .then(response => {
       const contentType = response.headers.get('content-type');
       if (
@@ -54,7 +57,7 @@ function checkValidServiceWorker(swUrl) {
       }
     })
     .catch(() => {
-      console.log('عدم دسترسی به اینترنت. برنامه آفلاین اجرا می‌شود.');
+      console.log('⚠️ بدون اتصال اینترنت: برنامه در حالت آفلاین اجرا می‌شود.');
     });
 }
 
