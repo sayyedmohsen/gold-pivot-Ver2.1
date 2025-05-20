@@ -1,4 +1,5 @@
 // src/serviceWorkerRegistration.js
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
   window.location.hostname === '[::1]' ||
@@ -7,53 +8,36 @@ const isLocalhost = Boolean(
   )
 );
 
-export function register(config) {
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-    const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
-    if (publicUrl.origin !== window.location.origin) return;
+export function register() {
+  if ('serviceWorker' in navigator) {
+    const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
-    window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-
-      if (isLocalhost) {
-        checkValidServiceWorker(swUrl, config);
-      } else {
-        registerValidSW(swUrl, config);
-      }
-    });
+    if (isLocalhost) {
+      // توسعه محلی
+      checkValidServiceWorker(swUrl);
+      navigator.serviceWorker.ready.then(() => {
+        console.log('Service worker آماده استفاده روی localhost.');
+      });
+    } else {
+      // در حالت production
+      registerValidSW(swUrl);
+    }
   }
 }
 
-function registerValidSW(swUrl, config) {
+function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
-      if (registration.waiting) {
-        config && config.onUpdate && config.onUpdate(registration);
-      }
-      registration.onupdatefound = () => {
-        const installingWorker = registration.installing;
-        if (!installingWorker) return;
-        installingWorker.onstatechange = () => {
-          if (installingWorker.state === 'installed') {
-            if (navigator.serviceWorker.controller) {
-              config && config.onUpdate && config.onUpdate(registration);
-            } else {
-              config && config.onSuccess && config.onSuccess(registration);
-            }
-          }
-        };
-      };
+      console.log('Service worker ثبت شد:', registration);
     })
     .catch(error => {
-      console.error('Error during service worker registration:', error);
+      console.error('خطا در ثبت service worker:', error);
     });
 }
 
-function checkValidServiceWorker(swUrl, config) {
-  fetch(swUrl, {
-    headers: { 'Service-Worker': 'script' },
-  })
+function checkValidServiceWorker(swUrl) {
+  fetch(swUrl)
     .then(response => {
       const contentType = response.headers.get('content-type');
       if (
@@ -66,22 +50,18 @@ function checkValidServiceWorker(swUrl, config) {
           });
         });
       } else {
-        registerValidSW(swUrl, config);
+        registerValidSW(swUrl);
       }
     })
     .catch(() => {
-      console.log('No internet connection found. App is running in offline mode.');
+      console.log('عدم دسترسی به اینترنت. برنامه آفلاین اجرا می‌شود.');
     });
 }
 
 export function unregister() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready
-      .then(registration => {
-        registration.unregister();
-      })
-      .catch(error => {
-        console.error(error.message);
-      });
+    navigator.serviceWorker.ready.then(registration => {
+      registration.unregister();
+    });
   }
 }

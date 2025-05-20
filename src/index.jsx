@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
+import './index.css';
+import { register } from './serviceWorkerRegistration'; // اضافه شد
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<React.StrictMode><App /></React.StrictMode>);
-import { register } from './serviceWorkerRegistration';
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-register();
+register(); // فعال‌سازی PWA
