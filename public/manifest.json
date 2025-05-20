@@ -23,3 +23,17 @@
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
+"screenshots": [
+  {
+    "src": "screenshots/desktop.png",
+    "sizes": "649x890",
+    "type": "image/png",
+    "form_factor": "narrow"
+  },
+  {
+    "src": "screenshots/mobile.png",
+    "sizes": "649x890",
+    "type": "image/png",
+    "form_factor": "narrow"
+  }
+]
