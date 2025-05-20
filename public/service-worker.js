@@ -5,9 +5,8 @@ const urlsToCache = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/favicon.ico',
-  '/icon-192.png',
-  '/icon-512.png'
+  '/icon-192x192.png',
+  '/icon-512x512.png'
 ];
 
 // نصب و کش کردن فایل‌ها
