@@ -1,14 +1,19 @@
 // public/service-worker.js
 
 const CACHE_NAME = "gold-pivot-cache-v1";
-const urlsToCache = ["/", "/index.html", "/favicon.ico"];
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/favicon.ico',
+  '/icon-192.png',
+  '/icon-512.png'
+];
 
 // نصب و کش کردن فایل‌ها
-self.addEventListener("install", (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
   );
 });
 
